@@ -23,6 +23,40 @@ def btnClick(button):
         count+=1
         checkWinner()
 
+def salmon():
+    btn1.config(bg = "salmon")
+    btn2.config(bg = "salmon")
+    btn3.config(bg = "salmon")
+    btn4.config(bg = "salmon")
+    btn5.config(bg = "salmon")
+    btn6.config(bg = "salmon")
+    btn7.config(bg = "salmon")
+    btn8.config(bg = "salmon")
+    btn9.config(bg = "salmon")
+
+def cornflowerblue():
+    btn1.config(bg = "cornflowerblue")
+    btn2.config(bg = "cornflowerblue")
+    btn3.config(bg = "cornflowerblue")
+    btn4.config(bg = "cornflowerblue")
+    btn5.config(bg = "cornflowerblue")
+    btn6.config(bg = "cornflowerblue")
+    btn7.config(bg = "cornflowerblue")
+    btn8.config(bg = "cornflowerblue")
+    btn9.config(bg = "cornflowerblue")
+
+def palegreen():
+    btn1.config(bg = "palegreen")
+    btn2.config(bg = "palegreen")
+    btn3.config(bg = "palegreen")
+    btn4.config(bg = "palegreen")
+    btn5.config(bg = "palegreen")
+    btn6.config(bg = "palegreen")
+    btn7.config(bg = "palegreen")
+    btn8.config(bg = "palegreen")
+    btn9.config(bg = "palegreen")
+
+
 def disable():
     btn1.config(state=DISABLED)
     btn2.config(state=DISABLED)
@@ -33,6 +67,7 @@ def disable():
     btn7.config(state=DISABLED)
     btn8.config(state=DISABLED)
     btn9.config(state=DISABLED)
+    count = 0
     return 0
 
 def reset():
@@ -54,8 +89,22 @@ def reset():
     btn7['text']=''
     btn8['text']=''
     btn9['text']=''
+    count = 0
     return 0
 
+def open():
+    new = Toplevel(logs)
+    new.title("Spēles noteikumi")
+   # new.geometry("380x300")
+    label = Label(new, text="SpeletajsX sāk spēli noklikšķinot uz jebkura lauciņai no piedāvātajiem 9, pēc tam SpeletajsO uzklikšķina uz vēlamā lauciņa.", padx=10)
+    label2 = Label(new, text = "Katram spēlētājam ir viena kārta uzlikt savu marķējumu pirms kārtu iedod otram.", padx=10)
+    label3 = Label(new, text = "Uzvar spēlētājs, kura marķējumi novietojas horizontālā, vertikālā vai diognālā līnijā.", padx=10)
+    
+    label.grid(row=1, column=1)
+    label2.grid(row=2, column=1)
+    label3.grid(row=3, column=1)
+
+    btn = Button(logs, command = open)
 
 def checkWinner():
     global winner
@@ -77,8 +126,19 @@ mainOP= Menu(logs)#izveido galveno izvēlni
 logs.config(menu=mainOP)#pievieno galvenajam logam
 
 OP=Menu(mainOP, tearoff=False)#mazā izvēlne
+OP2=Menu(mainOP, tearoff=False)
 mainOP.add_cascade(label="Opcijas", menu=OP)#lejupkrītoš saraksts
+mainOP.add_cascade(label="Informācija", menu=OP2)
 
+sub_menu = Menu(mainOP, tearoff=0)
+sub_menu.add_command(label="Sarkans", command=salmon)
+sub_menu.add_command(label="Zaļš", command=palegreen)
+sub_menu.add_command(label="Zils", command=cornflowerblue)
+mainOP.add_cascade(label="Krāsu nomaiņa", menu=sub_menu)
+
+#OP2.add_command(label="Krāsas")
+
+OP2.add_command(label="Noteikumi", command=open)
 OP.add_command(label="Jauna spēle", command=reset)
 OP.add_command(label="Iziet", command=logs.quit)
 
