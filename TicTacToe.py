@@ -78,10 +78,12 @@ def disable():
     btn7.config(state=DISABLED)
     btn8.config(state=DISABLED)
     btn9.config(state=DISABLED)
-    count = 0
     return 0
 
 def reset():
+    global count, SpeletajsX
+    count = 0
+    SpeletajsX = True
     btn1.config(state=NORMAL)
     btn2.config(state=NORMAL)
     btn3.config(state=NORMAL)
@@ -100,7 +102,7 @@ def reset():
     btn7['text']=''
     btn8['text']=''
     btn9['text']=''
-    count = 0
+
     return 0
 
 def open():
@@ -130,7 +132,8 @@ def checkWinner():
         winner=True
         disable()
         messagebox.showinfo("TicTacToe", "playerO ir uzvaretajs")
-    if count==9 and winner==False:
+    if count==9: 
+        winner==False
         disable()
         messagebox.showinfo("TicTacToe", "Neizšķirts")
     return
@@ -156,15 +159,15 @@ OP2.add_command(label="Noteikumi", command=open)
 OP.add_command(label="Jauna spēle", command=reset)
 OP.add_command(label="Iziet", command=logs.quit)
 
-btn1= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn1))
-btn2= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn2))
-btn3= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn3))
-btn4= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn4))
-btn5= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn5))
-btn6= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn6))
-btn7= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn7))
-btn8= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn8))
-btn9= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn9))
+btn1= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn1), bg ="azure2")
+btn2= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn2), bg ="beige")
+btn3= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn3), bg ="azure2")
+btn4= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn4), bg ="beige")
+btn5= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn5), bg ="azure2")
+btn6= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn6), bg ="beige")
+btn7= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn7), bg ="azure2")
+btn8= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn8), bg ="beige")
+btn9= Button(logs, text="",width=6,height=3,font=('Fixedsys', 24), bd=5, command=lambda:btnClick(btn9), bg ="azure2")
 
 btn1.grid(row=0, column=0)
 btn2.grid(row=0, column=1)
